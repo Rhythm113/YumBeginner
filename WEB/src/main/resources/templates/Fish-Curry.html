@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fish Curry Recipe - Yum Beginner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+ 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #000;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 30px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .recipe-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .recipe-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #222;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .recipe-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .divider {
+            height: 1px;
+            background: #eee;
+            margin: 30px 0;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        
+        .instructions-list {
+            list-style-type: decimal;
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .instructions-list li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+        
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .ingredient-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #333;
+        }
+        
+        .ingredient-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .ingredient-amount {
+            color: #666;
+        }
+        
+        .serving-form {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .serving-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .serving-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        #servings {
+            width: 60px;
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .serving-btn {
+            padding: 8px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .serving-btn:hover {
+            background: #555;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .recipe-container {
+                padding: 15px;
+            }
+            
+            .recipe-title {
+                font-size: 2rem;
+            }
+            
+            .ingredients-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .menu-icon {
+                display: block;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">
+                <img src="/images/logo.jpg" alt="YumBeginner Logo">
+                YumBeginner
+            </h1>
+            <nav>
+                
+                <ul class="nav-list">
+                    <li><a href="/"><i class="bx bx-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="bx bx-info-circle"></i> About</a></li>
+                    <li><a href="/cookwithai"><i class="bx bx-book-open"></i>Cook with AI</a></li>
+                    <li><a href="/contact"><i class="bx bx-envelope"></i> Contact</a></li>
+                    <li><a href="/profile"><i class="bx bx-user"></i>Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="recipe-container">
+            <h1 class="recipe-title">Fish Curry</h1>
+            <p class="recipe-subtitle">AN INGREDIENT REQUIREMENT PROVIDER</p>
+            
+            <div class="divider"></div>
+            
+            <h2 class="section-title">Instructions:</h2>
+            <ol class="instructions-list">
+                <li>Clean the fish pieces thoroughly.</li>
+                <li>Marinate with salt and turmeric powder for 15 minutes.</li>
+                <li>Heat oil in a pan, fry onions until golden brown.</li>
+                <li>Add tomatoes, green chili, and cook until soft.</li>
+                <li>Add the marinated fish pieces and gently cook.</li>
+                <li>Add water as needed, cover, and cook until the fish is tender and curry is flavorful.</li>
+                <li>Serve hot with steamed rice!</li>
+            </ol>
+            
+            <div class="divider"></div>
+            
+            <h2 class="section-title">Ingredients:</h2>
+            <div class="ingredients-grid" id="ingredients">
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Fish (grams)</div>
+                    <div class="ingredient-amount"><span class="quantity">250</span></div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Onion (pcs)</div>
+                    <div class="ingredient-amount"><span class="quantity">1</span></div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Tomato (pcs)</div>
+                    <div class="ingredient-amount"><span class="quantity">1</span></div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Green chili</div>
+                    <div class="ingredient-amount"><span class="quantity">1</span></div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Turmeric powder (tsp)</div>
+                    <div class="ingredient-amount"><span class="quantity">0.5</span></div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Salt (tsp)</div>
+                    <div class="ingredient-amount"><span class="quantity">1</span></div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Oil (tbsp)</div>
+                    <div class="ingredient-amount"><span class="quantity">1.5</span></div>
+                </div>
+            </div>
+            
+            <form class="serving-form" id="serving-form">
+                <label for="servings">How many people are you cooking for?</label>
+                <div class="serving-controls">
+                    <input type="number" id="servings" name="servings" min="1" value="1" required>
+                    <button type="submit" class="serving-btn">Calculate Ingredients</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2025 YumBeginner. All rights reserved.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all elements with data-base attribute
+            const ingredients = [
+                { name: 'Fish (grams)', base: 250 },
+                { name: 'Onion (pcs)', base: 1 },
+                { name: 'Tomato (pcs)', base: 1 },
+                { name: 'Green chili', base: 1 },
+                { name: 'Turmeric powder (tsp)', base: 0.5 },
+                { name: 'Salt (tsp)', base: 1 },
+                { name: 'Oil (tbsp)', base: 1.5 }
+            ];
+            
+            const form = document.getElementById('serving-form');
+            const servingsInput = document.getElementById('servings');
+            
+            // Load saved servings from localStorage
+            const savedServings = localStorage.getItem('fishCurryServings');
+            if (savedServings) {
+                servingsInput.value = savedServings;
+                updateIngredients(savedServings);
+            }
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const servings = parseInt(servingsInput.value);
+                localStorage.setItem('fishCurryServings', servings);
+                updateIngredients(servings);
+            });
+            
+            function updateIngredients(servings) {
+                const ingredientItems = document.querySelectorAll('.ingredient-item');
+                
+                ingredientItems.forEach((item, index) => {
+                    const baseAmount = ingredients[index].base;
+                    const calculatedAmount = baseAmount * servings;
+                    const quantityElement = item.querySelector('.quantity');
+                    
+                    // Format the number (remove .0 if it's a whole number)
+                    quantityElement.textContent = calculatedAmount % 1 === 0 ? 
+                        calculatedAmount : calculatedAmount.toFixed(1);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

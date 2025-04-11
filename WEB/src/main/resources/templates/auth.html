@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register Page</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .dialog {
+            padding: 1em;
+            margin: 1em auto;
+            max-width: 400px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+        .error { background-color: #ffe6e6; color: #cc0000; border: 1px solid #cc0000; }
+        .success { background-color: #e6ffe6; color: #006600; border: 1px solid #006600; }
+
+        .btn, .register-link a {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            background-color: #444;
+            transform: scale(1.05);
+        }
+        .register-link a:hover {
+            color: #007bff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="/images/logo.jpg" alt="Logo" style="max-width: 150px;">
+    </div>
+    <div id="loginForm" class="form-container">
+        <form action="/login" method="POST" th:object="${loginUser}">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" th:field="*{username}" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" th:field="*{password}" placeholder="Password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox" name="rememberMe"> Remember me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="register-link">
+                <p>Don't have an account? <a href="#" onclick="toggleForm()">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <div id="registerForm" class="form-container" style="display: none;">
+        <form action="/register" method="POST" th:object="${registerUser}" id="registerFormElement">
+            <h1>Register</h1>
+            <div class="input-box">
+                <input type="text" th:field="*{username}" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <i class='bx bxs-envelope'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" th:field="*{password}" id="password2" placeholder="Password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox" name="terms" id="terms"> I agree to the terms & conditions</label>
+            </div>
+            <button type="submit" class="btn">Register</button>
+            <div class="register-link">
+                <p>Already have an account? <a href="#" onclick="toggleForm()">Login</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div th:if="${error}" class="dialog error">
+    <p th:text="${error}"></p>
+</div>
+<div th:if="${success}" class="dialog success">
+    <p th:text="${success}"></p>
+</div>
+
+<script>
+    function toggleForm() {
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const isLoginVisible = loginForm.style.display !== 'none';
+        loginForm.style.display = isLoginVisible ? 'none' : 'block';
+        registerForm.style.display = isLoginVisible ? 'block' : 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const password = document.getElementById('password2');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const registerForm = document.getElementById('registerFormElement');
+
+        if (registerForm) {
+            registerForm.addEventListener('submit', function (event) {
+                if (password.value !== confirmPassword.value) {
+                    alert('Passwords do not match!');
+                    event.preventDefault();
+                }
+            });
+        }
+
+        const showLogin = /*[[${showLoginForm}]]*/ false;
+        const showRegister = /*[[${showRegisterForm}]]*/ false;
+        const error = /*[[${error}]]*/ null;
+        const success = /*[[${success}]]*/ null;
+
+        if (showRegister || (error && error.includes('Username already exists'))) {
+            toggleForm();
+        }
+        if (success && success.includes('Registration successful')) {
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+        }
+    });
+</script>
+</body>
+</html>

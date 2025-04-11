@@ -1,0 +1,325 @@
+*{
+    margin:  0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    width: 100%;
+    min-height: 100vh;
+    background: #f8f8f8;
+}
+header{
+    height: 60px;
+    width: 100%;
+    background-color: black;
+    color:#f8f8f8;
+    display: flex;
+    align-items: center;
+}
+
+
+.container{
+    width:90%;
+    margin:auto auto 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.nav-list{
+    display: none;
+   }
+
+nav ul li{
+    list-style: none;
+    display: inline;
+    margin-right: 20px;
+    font-weight: 550;
+    font-style: none;
+}
+.nav-list a {
+    color: white;
+    text-decoration: none;
+}
+
+
+.nav-list a:hover {
+    color: #f8f8f8;
+    text-decoration: underline;
+}
+
+.nav-list a {
+    color: white !important;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    gap: 10px; /* Adds space between image and text */
+    color: #fff;
+}
+
+.logo img {
+    height: 30px; /* Adjust based on your logo size */
+    width: auto;
+}
+
+
+.hero{
+    width:100%;
+    height: auto;
+    background: url('https://images.pexels.com/photos/952353/pexels-photo-952353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    padding: 140px 0;
+    color: rgb(250, 238, 238);
+     font-weight: 20px;
+    margin-bottom: 20px;
+}
+
+.hero h2{
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+.hero p{
+    font-size: 20px;
+    margin-bottom: 10px;
+
+}
+
+.search-box {
+    max-width: 550px;
+    margin: 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-box input {
+    width: 70%;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+    border: 1px solid rgb(15, 12, 12);
+}
+
+.search-box button {
+    padding: 10px 20px;
+    outline: none;
+    border: 0;
+    border-radius: 0 5px 5px 0;
+    font-size: 1rem;
+    background: #240d0a;
+    color: white;
+    cursor: pointer;
+}
+
+.recipes{
+    padding: 50px 0;
+}
+.recipes h1{
+    text-align: center; 
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+.recipe-section{
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    column-gap:10px ;
+}
+
+.recipe-card{
+    background: #f8f8f8;
+     margin: 20px 10px;
+     border-radius: 8px;
+     border:1px solid #ccc;
+     overflow: hidden;
+     box-shadow: 0 5px 5px #26262657;
+}
+
+
+.recipe-card img{
+    width: 100%;
+    height: 200px;
+    object-fit:cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    
+}
+
+.recipe-card h2{
+   font-size: 22px;
+   padding: 20px;
+}
+.recipe-card p{
+    font-size: 18px;
+    padding: 20px;
+ }
+
+ .recipe-card a{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background:#333;
+    cursor: pointer;
+    color:#fff;
+    padding: 15px;
+     
+ }
+
+
+footer{
+    background: #333;
+    padding:20px 0;
+    color: #fff;
+    text-align: center;
+}
+.about-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-section {
+    background-color: #eee;
+    padding: 40px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+}
+
+.about-section h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #222;
+    font-weight: bold;
+}
+
+.about-section p {
+    font-size: 18px;
+    color: #444;
+    max-width: 800px;
+    line-height: 1.6;
+    margin: 0 auto;
+}
+
+
+
+.menu-icon{
+    font-size: 24px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+}
+
+@media only screen and (min-width:768px){
+       .menu-icon{
+          display:none;
+       }
+       .nav-list{
+        display: block;
+       }
+
+    
+}
+
+@media only screen and (max-width:768px){
+        .hero h2{
+            font-size: 28px;
+        }
+        .hero p{
+            font-size: 15px;
+        }
+ 
+     
+     }  
+
+
+
+
+
+     /* profile */
+
+
+     /* Profile Section */
+.profile-container {
+    background-color: #ffffffb9; 
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Form Labels */
+.profile-container label {
+    display: block;
+    font-weight: bold;
+    margin: 15px 5px;
+    text-align: left;
+    color: #201f1f;
+}
+
+/* Input Fields */
+.profile-container input[type="text"],
+.profile-container textarea,
+.profile-container input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; 
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #ffffff; 
+    transition: border 0.3s;
+}
+
+.profile-container input[type="text"]:focus,
+.profile-container textarea:focus,
+.profile-container input[type="file"]:focus {
+    border-color: #141513; 
+    outline: none;
+}
+
+/* File Upload */
+.profile-container input[type="file"] {
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+/* Submit Button */
+.profile-container input[type="submit"] {
+    background-color: #10140f; 
+    color: white;
+    border: none;
+    padding: 12px;
+    margin-top: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.profile-container input[type="submit"]:hover {
+    background-color: #1e201eb9;
+}

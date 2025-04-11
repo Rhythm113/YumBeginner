@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Cook with AI - YumBeginner</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js" defer></script>
+    <style>
+        .ai-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .ai-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #222;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .ai-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .ai-form {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .ingredients-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ingredients-input input {
+            flex: 1;
+        }
+
+        .ingredients-input button {
+            padding: 0 15px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .ingredients-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .ingredient-tag {
+            background: #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .ingredient-tag button {
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .ai-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: background 0.3s;
+        }
+
+        .ai-btn:hover {
+            background: #555;
+        }
+
+        .results-section {
+            margin-top: 40px;
+            display: none;
+        }
+
+        .results-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #222;
+            text-align: center;
+        }
+
+        .recipe-suggestion {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #333;
+        }
+
+        .recipe-suggestion h3 {
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .recipe-suggestion p {
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .recipe-suggestion ul {
+            margin-left: 20px;
+            color: #444;
+        }
+
+        .loading {
+            text-align: center;
+            display: none;
+            margin: 20px 0;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #333;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .ai-container {
+                padding: 15px;
+            }
+
+            .ai-title {
+                font-size: 2rem;
+            }
+        }
+        .recipe-details {
+            margin-top: 20px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #333;
+        }
+
+        .recipe-details h3 {
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .recipe-details ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .recipe-details li {
+            margin-bottom: 5px;
+        }
+
+        .recipe-details strong {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .recipe-details p {
+            color: #444;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1 class="logo">
+            <img src="/images/logo.jpg" alt="YumBeginner Logo">
+            YumBeginner
+        </h1>
+        <nav>
+            <div class="menu-icon">&#9776;</div>
+            <ul class="nav-list">
+                <li><a href="/"><i class="bx bx-home"></i> Home</a></li>
+                <li><a href="#about"><i class="bx bx-info-circle"></i> About</a></li>
+                <li><a href="/cookwithai"><i class="bx bx-book-open"></i>Cook with AI</a></li>
+                <li><a href="/contact"><i class="bx bx-envelope"></i> Contact</a></li>
+                <li><a href="/profile"><i class="bx bx-user"></i>Profile</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="ai-container">
+        <h1 class="ai-title">Cook with AI</h1>
+        <p class="ai-subtitle">Tell us what ingredients you have, and we'll suggest recipes!</p>
+
+        <form class="ai-form" id="aiForm">
+            <div class="form-group">
+                <label for="ingredientInput">What ingredients do you have? (Add one at a time)</label>
+                <div class="ingredients-input">
+                    <input type="text" id="ingredientInput" placeholder="e.g., chicken, rice, tomatoes">
+                    <button type="button" id="addIngredient">Add</button>
+                </div>
+                <div class="ingredients-list" id="ingredientsList">
+                </div>
+                <input type="hidden" id="ingredients" name="ingredients" value="">
+            </div>
+
+            <div class="form-group">
+                <label for="dietary">Any dietary preferences or restrictions?</label>
+                <select id="dietary" name="dietary">
+                    <option value="none">No restrictions</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="gluten-free">Gluten-free</option>
+                    <option value="dairy-free">Dairy-free</option>
+                    <option value="nut-free">Nut-free</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="cuisine">Preferred cuisine style (optional)</label>
+                <select id="cuisine" name="cuisine">
+                    <option value="any">Any cuisine</option>
+                    <option value="italian">Italian</option>
+                    <option value="indian">Indian</option>
+                    <option value="mexican">Mexican</option>
+                    <option value="chinese">Chinese</option>
+                    <option value="mediterranean">Mediterranean</option>
+                    <option value="american">American</option>
+                </select>
+            </div>
+
+            <button type="submit" class="ai-btn" id="generateRecipeBtn">Get Recipe Suggestions</button>
+        </form>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Our AI chef is thinking...</p>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <h2 class="results-title">Suggested Recipes</h2>
+            <div id="recipeResults">
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div>
+        <p>&copy;2025 YumBeginner</p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const ingredientInput = document.getElementById('ingredientInput');
+        const addIngredientButton = document.getElementById('addIngredient');
+        const ingredientsList = document.getElementById('ingredientsList');
+        const ingredientsHiddenInput = document.getElementById('ingredients');
+        const aiForm = document.getElementById('aiForm');
+        const loadingDiv = document.getElementById('loading');
+        const resultsSection = document.getElementById('resultsSection');
+        const generateRecipeBtn = document.getElementById('generateRecipeBtn');
+        const recipeResultsDiv = document.getElementById('recipeResults');
+
+        let currentIngredients = [];
+
+        function updateIngredientsList() {
+            ingredientsList.innerHTML = '';
+            currentIngredients.forEach((ingredient, index) => {
+                const tag = document.createElement('div');
+                tag.classList.add('ingredient-tag');
+                tag.textContent = ingredient;
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'x';
+                removeButton.addEventListener('click', () => {
+                    currentIngredients.splice(index, 1);
+                    updateIngredientsList();
+                    ingredientsHiddenInput.value = currentIngredients.join(',');
+                });
+                tag.appendChild(removeButton);
+                ingredientsList.appendChild(tag);
+            });
+            ingredientsHiddenInput.value = currentIngredients.join(',');
+        }
+
+        addIngredientButton.addEventListener('click', () => {
+            const newIngredient = ingredientInput.value.trim();
+            if (newIngredient && !currentIngredients.includes(newIngredient)) {
+                currentIngredients.push(newIngredient);
+                updateIngredientsList();
+                ingredientInput.value = '';
+            } else if (currentIngredients.includes(newIngredient)) {
+                alert('Ingredient already added!');
+            } else {
+                alert('Please enter an ingredient.');
+            }
+        });
+
+        ingredientInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                addIngredientButton.click();
+            }
+        });
+
+        aiForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            loadingDiv.style.display = 'block';
+            resultsSection.style.display = 'none';
+            generateRecipeBtn.disabled = true;
+            recipeResultsDiv.innerHTML = ''; // Clear previous results
+
+            const formData = new FormData(aiForm);
+            const ingredientsArray = formData.getAll('ingredients')[0].split(',');
+            const dietaryValue = formData.get('dietary');
+            const cuisineValue = formData.get('cuisine');
+
+            fetch('/getRecipe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    ingredients: ingredientsArray,
+                    dietary: dietaryValue,
+                    cuisine: cuisineValue,
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    loadingDiv.style.display = 'none';
+                    resultsSection.style.display = 'block';
+                    generateRecipeBtn.disabled = false;
+                    recipeResultsDiv.innerHTML = ''; // Clear previous results
+
+                    let recipe;
+                    try {
+                        // Parse once if it's a JSON object string (double-stringified on server)
+                        recipe = typeof data.recipe === 'string' ? JSON.parse(data.recipe) : data.recipe;
+                    } catch (e) {
+                        console.error('Failed to parse recipe JSON:', e);
+                        recipeResultsDiv.innerHTML = '<p class="error">Invalid recipe data format received.</p>';
+                        return;
+                    }
+
+                    if (recipe) {
+                        let html = '<div class="recipe-details">';
+                        html += `<h3>${recipe.recipeName || 'AI Recipe Suggestion'}</h3>`;
+
+                        if (Array.isArray(recipe.ingredients)) {
+                            html += '<h4>Ingredients:</h4><ul>';
+                            recipe.ingredients.forEach(ingredient => {
+                                html += `<li>${ingredient}</li>`;
+                            });
+                            html += '</ul>';
+                        } else if (typeof recipe.ingredients === 'string') {
+                            html += '<h4>Ingredients:</h4><p>' + recipe.ingredients.replace(/\n/g, '<br>') + '</p>';
+                        }
+
+                        if (recipe.instructions) {
+                            html += '<h4>Instructions:</h4><p>' + recipe.instructions.replace(/\n/g, '<br>') + '</p>';
+                        }
+
+                        if (recipe.notes) {
+                            html += '<h4>Notes:</h4><p>' + recipe.notes.replace(/\n/g, '<br>') + '</p>';
+                        }
+
+                        html += '</div>';
+                        recipeResultsDiv.innerHTML = html;
+                    } else {
+                        recipeResultsDiv.innerHTML = '<p>No recipe suggestion found.</p>';
+                    }
+                })
+
+                    .catch(error => {
+                    console.error('Error fetching recipe:', error);
+                    loadingDiv.style.display = 'none';
+                    resultsSection.style.display = 'block';
+                    generateRecipeBtn.disabled = false;
+                    recipeResultsDiv.innerHTML = '<p class="error">Failed to get recipe suggestion.</p>';
+                });
+        });
+    });
+</script>
+</body>
+</html>

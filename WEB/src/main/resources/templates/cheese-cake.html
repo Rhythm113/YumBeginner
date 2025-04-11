@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cheesecake Recipe - Yum Beginner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #000;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 30px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .recipe-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .recipe-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #222;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .recipe-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .recipe-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .about-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .divider {
+            height: 1px;
+            background: #eee;
+            margin: 30px 0;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        
+        .instructions-list {
+            list-style-type: decimal;
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .instructions-list li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+        
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .ingredient-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #333;
+        }
+        
+        .ingredient-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .ingredient-amount {
+            color: #666;
+        }
+        
+        .serving-form {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .serving-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .serving-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        #servings {
+            width: 60px;
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .serving-btn {
+            padding: 8px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .serving-btn:hover {
+            background: #555;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .recipe-container {
+                padding: 15px;
+            }
+            
+            .recipe-title {
+                font-size: 2rem;
+            }
+            
+            .recipe-image {
+                height: 250px;
+            }
+            
+            .ingredients-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .menu-icon {
+                display: block;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">
+                <img src="logo.jpg" alt="YumBeginner Logo">
+                YumBeginner
+            </h1>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html"><i class="bx bx-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="bx bx-info-circle"></i> About</a></li>
+                    <li><a href="cookwithai.html"><i class="bx bx-book-open"></i> Cook With AI</a></li>
+                    <li><a href="contact.html"><i class="bx bx-envelope"></i> Contact</a></li>
+                    <li><a href="profile.html"><i class="bx bx-user"></i> Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="recipe-container">
+            <h1 class="recipe-title">Classic New York Cheesecake</h1>
+            <p class="recipe-subtitle">AN INGREDIENT REQUIREMENT PROVIDER</p>
+            
+            <img src="https://images.unsplash.com/photo-1702923406588-1183a9ae4713?q=80&w=2016&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Classic Cheesecake" class="recipe-image">
+            
+            <div class="about-section">
+                <h2 class="section-title">About Classic Cheesecake</h2>
+                <p>The New York-style cheesecake is known for its rich, dense, and creamy texture. This classic version features a buttery graham cracker crust and a smooth, velvety filling made with cream cheese, eggs, and sugar. The secret to its perfect texture is baking it in a water bath, which ensures even cooking and prevents cracking.</p>
+                <p>This dessert is perfect for special occasions or when you want to impress your guests. While it requires some patience (especially for cooling), the result is absolutely worth it. Serve it plain or with your favorite toppings like fresh berries, fruit compote, or chocolate sauce.</p>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <h2 class="section-title">Instructions:</h2>
+            <ol class="instructions-list">
+                <li>Preheat oven to 325°F (160°C). Wrap the outside of a 9-inch springform pan with aluminum foil to prevent water leakage.</li>
+                <li>For the crust: Mix graham cracker crumbs, melted butter, and sugar. Press firmly into the bottom of the pan. Bake for 10 minutes, then let cool.</li>
+                <li>For the filling: Beat cream cheese until smooth. Gradually add sugar, then eggs one at a time, mixing just until combined.</li>
+                <li>Add sour cream, vanilla extract, and lemon zest (if using), mixing until just incorporated. Avoid overmixing.</li>
+                <li>Pour filling over the crust. Place the springform pan in a larger baking pan and fill the outer pan with hot water halfway up the sides of the springform.</li>
+                <li>Bake for about 1 hour 15 minutes until the edges are set but the center still jiggles slightly.</li>
+                <li>Turn off the oven, leave the door slightly ajar, and let the cheesecake cool in the oven for 1 hour.</li>
+                <li>Remove from oven and water bath, then cool completely at room temperature. Refrigerate for at least 4 hours, preferably overnight, before serving.</li>
+            </ol>
+            
+            <div class="divider"></div>
+            
+            <h2 class="section-title">Ingredients (for 8 servings):</h2>
+            <div class="ingredients-grid" id="ingredients">
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Graham cracker crumbs</div>
+                    <div class="ingredient-amount"><span class="quantity">1.5</span> cups</div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Unsalted butter</div>
+                    <div class="ingredient-amount"><span class="quantity">0.33</span> cup</div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Sugar (for crust)</div>
+                    <div class="ingredient-amount"><span class="quantity">0.25</span> cup</div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Cream cheese</div>
+                    <div class="ingredient-amount"><span class="quantity">32</span> oz</div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Sugar (for filling)</div>
+                    <div class="ingredient-amount"><span class="quantity">1</span> cup</div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Eggs</div>
+                    <div class="ingredient-amount"><span class="quantity">4</span></div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Sour cream</div>
+                    <div class="ingredient-amount"><span class="quantity">1</span> cup</div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Vanilla extract</div>
+                    <div class="ingredient-amount"><span class="quantity">2</span> tsp</div>
+                </div>
+                <div class="ingredient-item">
+                    <div class="ingredient-name">Lemon zest</div>
+                    <div class="ingredient-amount"><span class="quantity">1</span> tsp</div>
+                </div>
+            </div>
+            
+            <form class="serving-form" id="serving-form">
+                <label for="servings">How many people are you cooking for?</label>
+                <div class="serving-controls">
+                    <input type="number" id="servings" name="servings" min="1" value="8" required>
+                    <button type="submit" class="serving-btn">Calculate Ingredients</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2025 YumBeginner. All rights reserved.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all elements with data-base attribute
+            const ingredients = [
+                { name: 'Graham cracker crumbs', base: 1.5, unit: 'cups' },
+                { name: 'Unsalted butter', base: 0.33, unit: 'cup' },
+                { name: 'Sugar (for crust)', base: 0.25, unit: 'cup' },
+                { name: 'Cream cheese', base: 32, unit: 'oz' },
+                { name: 'Sugar (for filling)', base: 1, unit: 'cup' },
+                { name: 'Eggs', base: 4 },
+                { name: 'Sour cream', base: 1, unit: 'cup' },
+                { name: 'Vanilla extract', base: 2, unit: 'tsp' },
+                { name: 'Lemon zest', base: 1, unit: 'tsp' }
+            ];
+            
+            const form = document.getElementById('serving-form');
+            const servingsInput = document.getElementById('servings');
+            
+            // Load saved servings from localStorage
+            const savedServings = localStorage.getItem('cheesecakeServings');
+            if (savedServings) {
+                servingsInput.value = savedServings;
+                updateIngredients(savedServings);
+            }
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const servings = parseInt(servingsInput.value);
+                localStorage.setItem('cheesecakeServings', servings);
+                updateIngredients(servings);
+            });
+            
+            function updateIngredients(servings) {
+                const ingredientItems = document.querySelectorAll('.ingredient-item');
+                
+                ingredientItems.forEach((item, index) => {
+                    const baseAmount = ingredients[index].base;
+                    const calculatedAmount = baseAmount * (servings / 8); // Base is for 8 servings
+                    const quantityElement = item.querySelector('.quantity');
+                    const unit = ingredients[index].unit || '';
+                    
+                    // Format the number (remove .0 if it's a whole number)
+                    quantityElement.textContent = calculatedAmount % 1 === 0 ? 
+                        calculatedAmount : calculatedAmount.toFixed(2);
+                    
+                    // Update the unit display if it exists
+                    const amountDisplay = item.querySelector('.ingredient-amount');
+                    if (unit) {
+                        amountDisplay.innerHTML = `<span class="quantity">${quantityElement.textContent}</span> ${unit}`;
+                    } else {
+                        amountDisplay.innerHTML = `<span class="quantity">${quantityElement.textContent}</span>`;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
