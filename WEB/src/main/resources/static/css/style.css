@@ -127,7 +127,7 @@ nav ul li{
     padding: 50px 0;
 }
 .recipes h1{
-    text-align: center; 
+    text-align: center;
     margin-bottom: 30px;
     font-size: 28px;
 }
@@ -155,7 +155,7 @@ nav ul li{
     object-fit:cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    
+
 }
 
 .recipe-card h2{
@@ -175,7 +175,7 @@ nav ul li{
     cursor: pointer;
     color:#fff;
     padding: 15px;
-     
+
  }
 
 
@@ -238,7 +238,7 @@ footer{
         display: block;
        }
 
-    
+
 }
 
 @media only screen and (max-width:768px){
@@ -248,9 +248,9 @@ footer{
         .hero p{
             font-size: 15px;
         }
- 
-     
-     }  
+
+
+     }
 
 
 
@@ -261,7 +261,7 @@ footer{
 
      /* Profile Section */
 .profile-container {
-    background-color: #ffffffb9; 
+    background-color: #ffffffb9;
     max-width: 500px;
     margin: 40px auto;
     padding: 25px;
@@ -286,17 +286,17 @@ footer{
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #ccc; 
+    border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 16px;
-    background-color: #ffffff; 
+    background-color: #ffffff;
     transition: border 0.3s;
 }
 
 .profile-container input[type="text"]:focus,
 .profile-container textarea:focus,
 .profile-container input[type="file"]:focus {
-    border-color: #141513; 
+    border-color: #141513;
     outline: none;
 }
 
@@ -308,7 +308,7 @@ footer{
 
 /* Submit Button */
 .profile-container input[type="submit"] {
-    background-color: #10140f; 
+    background-color: #10140f;
     color: white;
     border: none;
     padding: 12px;

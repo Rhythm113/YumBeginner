@@ -111,6 +111,9 @@ public class PageController {
         return "roasted-chicken";
     }
 
+    @GetMapping("/dim-bhuna")
+    public String dimBhuna() {return "dim-bhuna";}
+
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("registerUser") User user,
                                @RequestParam("email") String email,

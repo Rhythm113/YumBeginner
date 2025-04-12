@@ -1,88 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" href="/css/style.css">
-        <script src="script.js" defer></script>
-        <title>YumBeginner</title>
-    </head>
-    <body>
-        <header>
-            <div class="container">
-                <h1 class="logo">
-                    <img src="/images/logo.jpg" alt="YumBeginner Logo" >
-                    YumBeginner
-                </h1>
-                
-                <nav>
-                    <div class="menu-icon">&#9776;</div>
-                    <ul  class="nav-list">
-                       
-                        <li><a href="/"><i class="bx bx-home"></i> Home</a></li>
-                        <li><a href="#about"><i class="bx bx-info-circle"></i> About</a></li>
-                        <li><a href="/cookwithai"><i class="bx bx-book-open"></i>Cook with AI</a></li>
-                        <li><a href="/contact"><i class="bx bx-envelope"></i> Contact</a></li>
-                        <li><a href="/profile"><i class="bx bx-user"></i>Profile</a></li>
-                    </ul>
-                </nav>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YumBeginner</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+
+        @media (min-width: 768px) {
+            #nav-list {
+                max-height: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+
+<!-- Header -->
+<header class="bg-black text-white shadow-md">
+    <div class="container mx-auto flex items-center justify-between p-4">
+        <h1 class="flex items-center text-2xl font-bold">
+            <img src="/images/logo.jpg" alt="YumBeginner Logo" class="h-35 w-20 mr-2 " />
+
+        </h1>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none">&#9776;</button>
+
+        <!-- Navigation -->
+        <nav>
+            <ul
+                    id="nav-list"
+                    class="transition-all duration-300 ease-in-out overflow-hidden max-h-0 md:max-h-none md:flex md:items-center md:space-x-6 text-lg absolute md:static top-16 left-0 w-full md:w-auto bg-black md:bg-transparent p-4 md:p-0 z-50 hidden md:block"
+            >
+                <li><a href="/" class="block py-2 hover:text-yellow-400">Home</a></li>
+                <li><a href="#about" class="block py-2 hover:text-yellow-400">About</a></li>
+                <li><a href="/cookwithai" class="block py-2 hover:text-yellow-400">Cook with AI</a></li>
+                <li><a href="/contact" class="block py-2 hover:text-yellow-400">Contact</a></li>
+                <li><a href="/profile" class="block py-2 hover:text-yellow-400">Profile</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="bg-yellow-50 py-12">
+    <div class="container mx-auto text-center px-4">
+        <h2 class="text-3xl font-bold mb-4">Welcome to our page</h2>
+        <p class="mb-6 max-w-3xl mx-auto">
+            Welcome to YumBeginner — your go-to place for tasty, easy-to-follow recipes!
+            Whether you're a beginner or a kitchen pro...
+        </p>
+        <form class="flex justify-center gap-2 max-w-lg mx-auto mb-6">
+            <input
+                    id="searchInput"
+                    type="text"
+                    placeholder="Search Recipes.."
+                    class="w-full px-4 py-2 border border-yellow-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            />
+        </form>
+    </div>
+</section>
+
+
+<!-- Featured Recipes -->
+<section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold text-center mb-8">Featured Recipes</h1>
+
+        <!-- Recipe Cards -->
+        <div id="recipeContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="recipe-card bg-yellow-50 rounded-xl shadow p-4" data-title="Bhuna Khichuri" data-description="Bhuna Khichuri is a beloved Bangladeshi dish made with rice, lentils, and spices">
+                <img src="https://img.freepik.com/premium-photo/dal-khichadi-khichdi-is-tasty-indian-one-pot-recipe-served-bowl-moody-background_466689-22553.jpg?ga=GA1.1.853041937.1714220669&semt=ais_hybrid&w=740" alt="pic" class="rounded-lg w-full h-48 object-cover mb-4">
+                <h2 class="text-xl font-semibold mb-2">Bhuna Khichuri</h2>
+                <p class="text-sm mb-4">Bhuna Khichuri is a beloved Bangladeshi dish made with rice, lentils, and spices...</p>
+                <a href="/bhuna-khichuri" class="text-yellow-600 hover:underline">View recipe</a>
             </div>
-        </header>
-        <section class="hero">
-            <div class="hero-section">
-                <h2>Welcome to our page</h2>
-                <p>Welcome to YumBeginner — your go-to place for tasty, easy-to-follow recipes! Whether you're a beginner or a kitchen pro, we've got something for everyone. From breakfast to dinner, sweet treats to healthy meals, find the perfect recipe to match your mood and cravings. Let’s make cooking fun and delicious!</p>
-                <form class="search-box" action="#">
-                    <input type="text" placeholder="Search Recipe">
-                    <button type="submit"> Search</button>
-                </form>
+
+            <div class="recipe-card bg-yellow-50 rounded-xl shadow p-4" data-title="Beef Curry" data-description="Beef curry is a flavorful dish made by simmering beef in rich gravy">
+                <img src="https://img.freepik.com/free-photo/delicious-goulash-ready-dinner_23-2149370830.jpg?ga=GA1.1.853041937.1714220669&semt=ais_country_boost&w=740" alt="pic" class="rounded-lg w-full h-48 object-cover mb-4">
+                <h2 class="text-xl font-semibold mb-2">Beef Curry</h2>
+                <p class="text-sm mb-4">Beef curry is a flavorful dish made by simmering tender pieces of beef in rich gravy...</p>
+                <a href="/beef-curry" class="text-yellow-600 hover:underline">View recipe</a>
             </div>
-        </section>
-        <section class="recipes">
-            <h1>featured recipes</h1>
-            <div class="recipe-section">
-                <div class="recipe-card">
-                    <img src="https://img.freepik.com/premium-photo/dal-khichadi-khichdi-is-tasty-indian-one-pot-recipe-served-bowl-moody-background_466689-22553.jpg?ga=GA1.1.853041937.1714220669&semt=ais_hybrid&w=740" alt="pic">
-                    <h2>Bhuna Khichuri</h2>
-                    <p>Bhuna Khichuri is a beloved Bangladeshi dish made with rice, lentils, and a fragrant blend of spices such as bay leaves, cinnamon, and cardamom. It's slow-cooked to create a rich and hearty texture, making it perfect for rainy days .Often served with sides like fried eggplant, boiled eggs, or pickles, it’s a complete and comforting meal that brings people together in its flavor.</p>
-                    <a href="/bhuna-khichuri">view recipe</a>
-                </div>
-                <div class="recipe-card">
-                    <img src="https://img.freepik.com/free-photo/delicious-goulash-ready-dinner_23-2149370830.jpg?ga=GA1.1.853041937.1714220669&semt=ais_country_boost&w=740" alt="pic">
-                    <h2>Beef Curry</h2>
-                    <p>Beef curry is a flavorful dish made by simmering tender pieces of beef in a rich gravy of onions, garlic, and aromatic spices such as cumin, turmeric. Often, yogurt, tomatoes, or coconut milk are added for a deeper taste. Slow-cooked to perfection, it pairs wonderfully with rice, naan, or paratha, making it a hearty and comforting meal for gatherings or everyday enjoyment!</p>
-                    <a href="/beef-curry">view recipe</a>
-                </div>
-                <div class="recipe-card">
-                    <img src="https://img.freepik.com/free-photo/top-view-delicious-fish-meal-tray_23-2148734692.jpg?ga=GA1.1.853041937.1714220669&semt=ais_country_boost&w=740" alt="pic">
-                    <h2>Fish Curry</h2>
-                    <p>Fish curry is a dish enjoyed worldwide for its rich flavors. Fish is cooked with a combination of spices, like turmeric, cumin along with ingredients like onions, garlic, ginger, and tomatoes. Often, tamarind or coconut milk is added for tanginess . The blend creates a hearty, aromatic gravy that pairs perfectly with rice . It’s a wholesome, comforting meal, perfect for any occasion!</p>
-                    <a href="/fish-curry">view recipe</a>
-                </div>
-                <div class="recipe-card">
-                    <img src="https://img.freepik.com/free-photo/top-view-bowl-homemade-stew-pepper_23-2148494757.jpg?ga=GA1.1.853041937.1714220669&semt=ais_country_boost&w=740" alt="pic">
-                    <h2>Chicken Curry</h2>
-                    <p>Chicken curry is a classic dish where tender chicken is cooked in a flavorful gravy made with onions, garlic, ginger, and a blend of aromatic spices like turmeric, cumin, and coriander. Sometimes, tomatoes, yogurt, or coconut milk are added for extra richness. It's versatile, delicious, and pairs beautifully with rice or flatbread for a comforting meal. Simple yet satisfying!</p>
-                    <a href="/chicken-curry">view recipe</a>
-                </div>
-            </div> 
-        </section>
-       
-        <section id="about" class="about-section">
-            <div class="about-container">
-                <h2>About YumBeginner</h2>
-                <p>
-                    YumBeginner is a friendly space for beginners to explore and learn easy, delicious recipes. 
-                    We’re here to make your cooking journey fun, simple, and tasty — one recipe at a time!
-                </p>
+
+            <div class="recipe-card bg-yellow-50 rounded-xl shadow p-4" data-title="Fish Curry" data-description="Fish curry cooked with turmeric, cumin and coconut milk">
+                <img src="https://img.freepik.com/free-photo/top-view-delicious-fish-meal-tray_23-2148734692.jpg?ga=GA1.1.853041937.1714220669&semt=ais_country_boost&w=740" alt="pic" class="rounded-lg w-full h-48 object-cover mb-4">
+                <h2 class="text-xl font-semibold mb-2">Fish Curry</h2>
+                <p class="text-sm mb-4">Fish curry is cooked with spices like turmeric, cumin, and coconut milk for richness...</p>
+                <a href="/fish-curry" class="text-yellow-600 hover:underline">View recipe</a>
             </div>
-        </section>
-        
-        
-        <footer>
-            <div>
-                <p>&copy;2025 YumBeginner</p>
+
+            <div class="recipe-card bg-yellow-50 rounded-xl shadow p-4" data-title="Chicken Curry" data-description="Classic dish with rich flavorful sauce made with onion garlic and spices">
+                <img src="https://img.freepik.com/free-photo/top-view-bowl-homemade-stew-pepper_23-2148494757.jpg?ga=GA1.1.853041937.1714220669&semt=ais_country_boost&w=740" alt="pic" class="rounded-lg w-full h-48 object-cover mb-4">
+                <h2 class="text-xl font-semibold mb-2">Chicken Curry</h2>
+                <p class="text-sm mb-4">Chicken curry is a classic dish with a rich, flavorful sauce made with onion, garlic, and spices...</p>
+                <a href="/chicken-curry" class="text-yellow-600 hover:underline">View recipe</a>
             </div>
-        </footer>
-    </body>
+
+            <div class="recipe-card bg-yellow-50 rounded-xl shadow p-4" data-title="Dim Bhuna" data-description="Dim Bhuna is a spicy egg curry with rich masala sauce and boiled eggs">
+                <img src="https://img.freepik.com/free-psd/delicious-egg-curry-indian-cuisine-spicy-food-bowl_84443-44732.jpg?ga=GA1.1.1692332528.1744268370&semt=ais_hybrid&w=740" alt="Dim Bhuna" class="rounded-lg w-full h-48 object-cover mb-4">
+                <h2 class="text-xl font-semibold mb-2">Dim Bhuna</h2>
+                <p class="text-sm mb-4">Dim Bhuna is a flavorful Bangladeshi-style egg curry with rich masala sauce and boiled eggs...</p>
+                <a href="/dim-bhuna" class="text-yellow-600 hover:underline">View recipe</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- About Section -->
+<section id="about" class="bg-yellow-200 py-12">
+    <div class="container mx-auto text-center px-4">
+        <h2 class="text-2xl font-bold mb-4">About YumBeginner</h2>
+        <p class="max-w-2xl mx-auto">YumBeginner is a friendly space for beginners to explore and learn easy, delicious recipes. We’re here to make your cooking journey fun, simple, and tasty — one recipe at a time!</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black py-4 text-center">
+    <p class="text-sm text-gray-600">&copy; 2025 YumBeginner</p>
+</footer>
+
+<!-- Mobile Nav Toggle Script -->
+<script>
+    //search
+    const searchInput = document.getElementById('searchInput');
+    const recipeCards = document.querySelectorAll('.recipe-card');
+
+    searchInput.addEventListener('input', function () {
+        const query = this.value.toLowerCase();
+
+        recipeCards.forEach(card => {
+            const title = card.dataset.title.toLowerCase();
+            const desc = card.dataset.description.toLowerCase();
+
+            if (title.includes(query) || desc.includes(query)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const navList = document.getElementById("nav-list");
+
+    menuToggle.addEventListener("click", () => {
+        navList.classList.toggle("hidden");
+
+        if (navList.classList.contains("hidden")) {
+            navList.style.maxHeight = "0px";
+        } else {
+            navList.style.maxHeight = navList.scrollHeight + "px";
+        }
+    });
+</script>
+
+</body>
 </html>
